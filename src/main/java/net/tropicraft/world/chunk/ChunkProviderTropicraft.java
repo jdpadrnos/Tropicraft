@@ -91,11 +91,11 @@ public class ChunkProviderTropicraft implements IChunkProvider { //NOTE: THIS WI
 		//this.villageGenerator.generate(this, worldObj, x, z, null); TODO
 
 		Chunk chunk = new Chunk(this.worldObj, blocks, metas, x, z);
-		byte[] abyte1 = chunk.getBiomeArray();
+		int[] abyte1 = chunk.getBiomeArray512();
 
 		for (int k = 0; k < abyte1.length; ++k)
 		{
-			abyte1[k] = (byte)this.biomesForGeneration[k].biomeID;
+			abyte1[k] = (int)this.biomesForGeneration[k].biomeID;
 		}
 
 		chunk.generateSkylightMap();
