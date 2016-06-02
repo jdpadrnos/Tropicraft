@@ -20,7 +20,7 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.tropicraft.block.BlockBambooChest;
-import net.tropicraft.block.BlockBambooChute;
+import net.tropicraft.block.BlockBambooShoot;
 import net.tropicraft.block.BlockBambooDoor;
 import net.tropicraft.block.BlockBambooMug;
 import net.tropicraft.block.BlockBongoDrum;
@@ -139,7 +139,7 @@ public class TCBlockRegistry {
 	public static final BlockPalmLeaves palmLeaves = new BlockPalmLeaves();
 	public static final BlockRainforestLeaves rainforestLeaves = new BlockRainforestLeaves();
 
-	public static final BlockBambooChute bambooChute = new BlockBambooChute();
+	public static final BlockBambooShoot bambooShoot = new BlockBambooShoot();
 	public static final BlockFalling purifiedSand = new BlockPurifiedSand();
 
 	public static final BlockMineralSands mineralSands = new BlockMineralSands();
@@ -152,9 +152,7 @@ public class TCBlockRegistry {
 	public static final BlockPurchasePlate purchasePlate = new BlockPurchasePlate();
 
 	public static final BlockBambooMug bambooMug = new BlockBambooMug();
-	public static final BlockEIHMixer eihMixer = new BlockEIHMixer();
-
-	public static final Fluid fluidTropicsWater = new Fluid("waterTropics").setBlock(TCBlockRegistry.tropicsWater).setUnlocalizedName(tropicsWater.getUnlocalizedName());
+	public static final BlockEIHMixer eihMixer = new BlockEIHMixer();;
 
 	/**
 	 * Register all the blocks
@@ -208,7 +206,7 @@ public class TCBlockRegistry {
 		registerBlock(palmLeaves, TCNames.palmLeaves);
 		Blocks.fire.setFireInfo(TCBlockRegistry.palmLeaves, 30, 60);
 		registerMultiBlock(rainforestLeaves, TCNames.leafRainforest, TCNames.rainforestLeafNames);
-		registerBlock(bambooChute, TCNames.bambooChute);
+		registerBlock(bambooShoot, TCNames.bambooShoot);
 		registerBlock(purifiedSand, TCNames.purifiedSand);
 		registerMultiBlock(mineralSands, TCNames.mineralSand, TCNames.mineralSandNames);
 		registerBlock(sifter, TCNames.sifter);
@@ -218,8 +216,6 @@ public class TCBlockRegistry {
 		registerBlock(purchasePlate, TCNames.purchasePlate);
 		registerBlock(bambooMug, TCNames.bambooMug);
 		registerBlock(eihMixer, TCNames.eihMixer);
-
-		liquidDictInit();
 	}
 
 	private static void registerMultiBlock(Block block, String name, Class<? extends ItemBlock> c, Object[] params) {
@@ -260,10 +256,5 @@ public class TCBlockRegistry {
 	private static void registerBlockNoName(Block block, String name) {
 		GameRegistry.registerBlock(block, "tile." + name);
 		//block.setBlockName(name);
-	}
-
-	private static void liquidDictInit() {
-		FluidRegistry.registerFluid(fluidTropicsWater);
-		FluidContainerRegistry.registerFluidContainer(fluidTropicsWater, new ItemStack(TCItemRegistry.bucketTropicsWater), new ItemStack(Items.bucket));
 	}
 }
